@@ -4,6 +4,7 @@ public class P64 {
 
 	public static void main(String[] args) {
 		int a = 10;
+		int b = 10;
 		double d = 10.2345;
 		String str1 = "abc"; // 힙영역 스트링풀에 "abc"라는 문자열 생성, 해당주소가 str1에 들어감
 		String str2 = "abc"; // 힙영역 스트링풀에 "abc"라는 문자열이 있기때문에 같은 주소가 str2에 들어감
