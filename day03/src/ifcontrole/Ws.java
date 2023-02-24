@@ -7,15 +7,15 @@ public class Ws {
 		double avg3 = 0, avg4 = 0, avg7 = 0;
 		for (int i = 1; i < 101; i++) {
 			if (i % 3 == 0) {
-				sum3 = sum3 + i;
+				sum3 += i;
 				avg3++;
 			}
 			if (i % 4 == 0) {
-				sum4 = sum4 + i;
+				sum4 += i;
 				avg4++;
 			}
 			if (i % 7 == 0) {
-				sum7 = sum7 + i;
+				sum7 += i;
 				avg7++;
 			}
 		}
