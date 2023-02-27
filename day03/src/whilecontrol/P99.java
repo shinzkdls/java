@@ -3,7 +3,7 @@ package whilecontrol;
 public class P99 {
 
 	public static void main(String[] args) {
-		int bb = 100;
+		int bb = 1000;
 		int aa = 1000;
 		int cc = 100;
 		for (int i = 2; i < 10; i++) {
