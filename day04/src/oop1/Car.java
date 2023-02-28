@@ -6,7 +6,7 @@ public class Car {
 	public int size;
 
 	// 생성자. (constructor);
-	public Car() {
+	public Car() { // Default Constructor는 아무 생성자가 없을때만 기본으로 존재, argument가 포함된 생성자를 선언할 경우 지원하지않음
 		this.name = "k1";
 		this.color = "red";
 		this.size = 1000;
