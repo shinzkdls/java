@@ -39,16 +39,16 @@ public class App {
 			for (int j = 0; j < 5; j++) {
 				if (i == 0) {
 					sum = sum + arrEmp[j].getAnnSalary();
+					if (j == 4) {
+						System.out.println("Employee의 연봉 합계: " + sum);
+					}
 				} else {
 					sum = sum + arrMag[j].getAnnSalary();
+					if (j == 4) {
+						System.out.println("Manager의 연봉 합계: " + sum);
+					}
 				}
 			}
-			if (i == 0) {
-				System.out.println("Employee의 연봉 합계: " + sum);
-			} else {
-				System.out.println("Manager의 연봉 합계: " + sum);
-			}
-			System.out.println("");
 		}
 
 	}
