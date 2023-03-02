@@ -23,12 +23,6 @@ public class Account {
 		this.grade = grade;
 	}
 
-	@Override
-	public String toString() {
-		return "Account [accNum=" + accNum + ", accName=" + accName + ", balance=" + balance + ", rate=" + rate
-				+ ", grade=" + grade + "]";
-	}
-
 	public String getAccNum() {
 		return this.accNum;
 	}
@@ -65,6 +59,12 @@ public class Account {
 		double result = 0.0;
 		result = this.balance * this.rate / 100;
 		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "Account [accNum=" + accNum + ", accName=" + accName + ", balance=" + balance + ", rate=" + rate
+				+ ", grade=" + grade + "]";
 	}
 
 }
