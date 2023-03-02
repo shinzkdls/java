@@ -11,9 +11,6 @@ public class App {
 		accs[4] = new Account("james5", 10000, 0.28, "SIVER");
 		accs[5] = new Account("james6", 10000, 0.31, "VIP");
 
-		accs[0].deposit(1500);
-		accs[1].withdraw(1500);
-
 		for (Account a : accs) {
 			System.out.println(a);
 		}
@@ -21,8 +18,8 @@ public class App {
 		System.out.println("");
 
 		for (Account a : accs) {
-			System.out.println(
-					"계좌번호 " + a.getAccNum() + "의 잔액: " + a.getBalance() + ", 이자: " + Math.round(a.getInterest()));
+			System.out.println("계좌번호 " + a.getAccNum() + "의 잔액: " + a.getBalance() + ", 이자: "
+					+ Math.round(a.getInterest() * 100) / 100.0);
 		}
 
 		System.out.println("");
