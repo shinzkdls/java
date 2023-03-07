@@ -19,8 +19,6 @@ public class App {
 			}
 
 			else if (cmd.equals("o")) {
-				System.out.println("Input Account Number..");
-				String accnum = sc.next();
 				System.out.println("Input Account Name..");
 				String name = sc.next();
 				System.out.println("Input Account Holder..");
@@ -28,7 +26,7 @@ public class App {
 				System.out.println("Input Account Balance..");
 				double balance = Double.parseDouble(sc.next());
 				try {
-					acc = new Account(accnum, name, holder, balance);
+					acc = new Account(name, holder, balance);
 					System.out.println(acc.toString());
 				} catch (NegativeNumberException e) {
 					System.out.println(e.getMessage());
