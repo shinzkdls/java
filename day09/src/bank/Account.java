@@ -8,13 +8,14 @@ public class Account {
 
 	// Constructor - 음수 예외 상황
 	public Account() {
+		this.accNo = MakeAccountNumber.makeAccNum();
 	}
 
-	public Account(String accNo, String name, String accHolder, double balance) throws NegativeNumberException {
+	public Account(String name, String accHolder, double balance) throws NegativeNumberException {
+		this();
 		if (balance <= 0.0) {
 			throw new NegativeNumberException("음수입력에러");
 		}
-		this.accNo = accNo;
 		this.name = name;
 		this.accHolder = accHolder;
 		this.balance = balance;
