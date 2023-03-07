@@ -13,7 +13,7 @@ public class Account {
 
 	public Account(String name, String accHolder, double balance) throws NegativeNumberException {
 		this();
-		if (balance <= 0.0) {
+		if (balance < 0.0) {
 			throw new NegativeNumberException("음수입력에러");
 		}
 		this.name = name;
