@@ -74,8 +74,7 @@ public class App2 {
 						System.out.println(i);
 					}
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					System.out.println("item이 존재하지 않습니다.");
 				}
 			}
 		}

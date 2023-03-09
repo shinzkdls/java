@@ -42,6 +42,9 @@ public class ItemDAO implements DAO<Integer, ItemDTO> {
 
 	@Override
 	public ItemDTO select(Integer k) throws Exception {
+		if (!db.containsKey(k)) {
+			throw new Exception();
+		}
 		ItemDTO item = null;
 		item = db.get(k);
 		return item;
@@ -51,6 +54,9 @@ public class ItemDAO implements DAO<Integer, ItemDTO> {
 	public List<ItemDTO> select() throws Exception {
 		ArrayList<ItemDTO> list = new ArrayList<ItemDTO>();
 		Collection<ItemDTO> col = db.values();
+		if (col.size() == 0) {
+			throw new Exception();
+		}
 		for (ItemDTO i : col) {
 			list.add(i);
 		}
