@@ -39,6 +39,7 @@ public class CustDaoImpl implements DAO<String, String, Cust> {
 		String pwd = props.getProperty("DB_PWD");
 		String url = props.getProperty("DB_URL");
 		con = DriverManager.getConnection(url, id, pwd);
+
 		return con;
 	}
 
@@ -89,20 +90,22 @@ public class CustDaoImpl implements DAO<String, String, Cust> {
 	public Cust select(String k) throws Exception {
 		Cust cust = null;
 		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(Sql.selectSql);) {
-			pstmt.setString(1, "id29");
+			pstmt.setString(1, k);
 			try (ResultSet rset = pstmt.executeQuery()) {
-				rset.next(); // 한칸 다음칸으로 이동시켜야됨 !!!!!!!!!!!!!!!!!!!!
+				rset.next();// 한칸 다음칸으로 이동시켜야됨 !!!!!!!!!!!!!!!!!!!!
 				String db_id = rset.getString("id");
 				String db_pwd = rset.getString("pwd");
 				String db_name = rset.getString("name");
 				int db_age = rset.getInt("age");
 				cust = new Cust(db_id, db_pwd, db_name, db_age);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 
-		} catch (SQLException e1) {
-			e1.printStackTrace();
+			} catch (Exception e) {
+				// 데이터 존재하지않을때 예외 발생 위치
+				throw e;
+			}
+		} catch (Exception e1) {
+			// 네트워크 연결되지않았을때 예외 발생 위치
+			throw e1;
 		}
 		return cust;
 	}
@@ -120,12 +123,12 @@ public class CustDaoImpl implements DAO<String, String, Cust> {
 					int db_age = rset.getInt("age");
 					list.add(new Cust(db_id, db_pwd, db_name, db_age));
 				}
-			} catch (SQLException e) {
-				e.printStackTrace();
+			} catch (Exception e) {
+				throw e; // 데이터 존재하지않을때 예외 발생 위치 => 발생하지않음 List가 null로 정상 리턴됨
 			}
 
-		} catch (SQLException e1) {
-			e1.printStackTrace();
+		} catch (Exception e1) {
+			throw e1; // 네트워크 연결되지않았을때 예외 발생 위치
 		}
 		return list;
 	}

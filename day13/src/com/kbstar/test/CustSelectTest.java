@@ -1,5 +1,6 @@
 package com.kbstar.test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.kbstar.dto.Cust;
@@ -20,12 +21,16 @@ public class CustSelectTest {
 
 		System.out.println("====================");
 
-		List<Cust> list = null;
+		List<Cust> list = new ArrayList<Cust>();
 
 		try {
 			list = crudService.get();
-			for (Cust c : list) {
-				System.out.println(c);
+			if (list.size() == 0) {
+				System.out.println("데이터가 없습니다.");
+			} else {
+				for (Cust c : list) {
+					System.out.println(c);
+				}
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

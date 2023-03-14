@@ -30,7 +30,7 @@ public class SelectTest {
 
 		try (Connection con = DriverManager.getConnection(url, id, pwd);
 				PreparedStatement pstmt = con.prepareStatement(selectSql);) {
-			pstmt.setString(1, "id29");
+			pstmt.setString(1, "id99");
 			try (ResultSet rset = pstmt.executeQuery()) {
 				rset.next(); // 한칸 다음칸으로 이동시켜야됨 !!!!!!!!!!!!!!!!!!!!
 				String db_id = rset.getString("id");
