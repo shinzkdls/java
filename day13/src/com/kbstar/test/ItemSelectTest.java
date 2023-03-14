@@ -7,11 +7,11 @@ import com.kbstar.service.ItemCRUDServiceImpl;
 public class ItemSelectTest {
 
 	public static void main(String[] args) {
-		CRUDService<String, Item> service = new ItemCRUDServiceImpl();
+		CRUDService<String, Item> crudService = new ItemCRUDServiceImpl();
 
 		Item obj = null;
 		try {
-			obj = service.get("2023314862100");
+			obj = crudService.get("2023314862100");
 			System.out.println(obj);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
