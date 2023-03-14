@@ -18,7 +18,8 @@ public class MakeItemNumber {
 	public static String makeCartNum() {
 		String accNum = "";
 		Calendar cal = Calendar.getInstance();
-		accNum = "" + cal.get(Calendar.YEAR) + (cal.get(Calendar.MONTH) + 1) + cal.get(Calendar.DAY_OF_MONTH) + cnt;
+		accNum = "" + cal.get(Calendar.YEAR) + (cal.get(Calendar.MONTH) + 1) + cal.get(Calendar.DAY_OF_MONTH)
+				+ cal.get(Calendar.MILLISECOND) + cnt2;
 		cnt++;
 		return accNum;
 	}
