@@ -63,7 +63,7 @@ public class ItemCRUDServiceImpl implements CRUDService<String, Item> {
 			if (e instanceof SQLRecoverableException) {
 				throw new Exception("시스템 장애 입니다.");
 			} else {
-				throw new Exception("해당 ID가 존재 하지 않습니다.");
+				throw new Exception("해당 상품이 존재 하지 않습니다.");
 			}
 		}
 		// Email, SMS전송

@@ -62,7 +62,7 @@ public class ItemDaoImpl implements DAO<String, String, Item> {
 			pstmt.setString(4, v.getId());
 			int result = pstmt.executeUpdate(); // 작성한 쿼리를 업데이트한다 => 정상이면 1리턴 비정상이면 0리턴
 			if (result == 0) {
-				throw new Exception("ID 없음");
+				throw new Exception("상품 없음");
 			}
 		} catch (Exception e1) {
 			throw e1;
@@ -71,48 +71,46 @@ public class ItemDaoImpl implements DAO<String, String, Item> {
 
 	@Override
 	public Item select(String k) throws Exception {
-		Item item = null;
+		Item obj = null;
 		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(Sql.itemSelectSql);) {
 			pstmt.setString(1, k);
 			try (ResultSet rset = pstmt.executeQuery()) {
-				rset.next();// 한칸 다음칸으로 이동시켜야됨 !!!!!!!!!!!!!!!!!!!!
-				String db_id = rset.getString("id");
-				String db_name = rset.getString("name");
-				int db_price = rset.getInt("price");
-				double db_rate = rset.getDouble("rate");
-				Date db_date = rset.getDate("regdate");
-				item = new Item(db_id, db_name, db_price, db_rate, db_date);
+				rset.next();
+				String id = rset.getString("id");
+				String name = rset.getString("name");
+				int price = rset.getInt("price");
+				Double rate = rset.getDouble("rate");
+				Date regdate = rset.getDate("regdate");
+				obj = new Item(id, name, price, rate, regdate);
 			} catch (Exception e) {
-				// 데이터 존재하지않을때 예외 발생 위치
 				throw e;
 			}
-		} catch (Exception e1) {
-			// 네트워크 연결되지않았을때 예외 발생 위치
-			throw e1;
+		} catch (Exception e) {
+			throw e;
 		}
-		return item;
+		return obj;
 	}
 
 	@Override
 	public List<Item> selectAll() throws Exception {
 		List<Item> list = new ArrayList<Item>();
-		// =====================List와 같은 인터페이스는 null로 초기화 할 수 없음
-		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(Sql.itemSelectAllSql);) {
-			try (ResultSet rset = pstmt.executeQuery()) {
+		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(Sql.itemSelectAllSql)) {
+			try (ResultSet rset = pstmt.executeQuery();) {
 				while (rset.next()) {
-					String db_id = rset.getString("id");
-					String db_name = rset.getString("name");
-					int db_price = rset.getInt("price");
-					double db_rate = rset.getDouble("rate");
-					Date db_date = rset.getDate("regdate");
-					list.add(new Item(db_id, db_name, db_price, db_rate, db_date));
+					Item item = null;
+					String id = rset.getString("id");
+					String name = rset.getString("name");
+					int price = rset.getInt("price");
+					double rate = rset.getDouble("rate");
+					Date regdate = rset.getDate("regdate");
+					item = new Item(id, name, price, rate, regdate);
+					list.add(item);
 				}
 			} catch (Exception e) {
-				throw e; // 데이터 존재하지않을때 예외 발생 위치 => 발생하지않음 List가 null로 정상 리턴됨
+				throw e;
 			}
-
-		} catch (Exception e1) {
-			throw e1; // 네트워크 연결되지않았을때 예외 발생 위치
+		} catch (Exception e) {
+			throw e;
 		}
 		return list;
 	}

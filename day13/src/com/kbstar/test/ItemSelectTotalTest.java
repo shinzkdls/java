@@ -7,7 +7,7 @@ import com.kbstar.dto.Item;
 import com.kbstar.frame.CRUDService;
 import com.kbstar.service.ItemCRUDServiceImpl;
 
-public class itemSelectTest {
+public class ItemSelectTotalTest {
 
 	public static void main(String[] args) {
 		CRUDService<String, Item> service = new ItemCRUDServiceImpl();
