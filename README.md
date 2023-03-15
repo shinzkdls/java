@@ -39,17 +39,20 @@ BankUser가입 > BankUser로그인 > 계좌개설 > 계좌조회 > 계좌이체 
   - 구현기능
     - register : BankUser를 등록합니다.
     <img width="800" alt="스크린샷" src="https://github.com/shinzkdls/java/blob/assignment/final_ws0315/src/image/ws0315_register.png" >
+    <br>
     - login : BankUser의 정보로 로그인합니다.
     <img width="800" alt="스크린샷" src="https://github.com/shinzkdls/java/blob/assignment/final_ws0315/src/image/ws0315_login.png" >
+    <br>
     - makeAccount : 계좌를 생성합니다.
     - getAllAccount : 보유한 모든 계좌를 조회합니다.
     <img width="800" alt="스크린샷" src="https://github.com/shinzkdls/java/blob/assignment/final_ws0315/src/image/ws0315_makeAccount.png" >
+    <br>
     - getAllTransaction : 입력한 계좌의 모든 거래내역을 조회합니다.
     - transaction : 계좌이체를 실행합니다.
     <img width="800" alt="스크린샷" src="https://github.com/shinzkdls/java/blob/assignment/final_ws0315/src/image/ws0315_transaction.png" >
 
 
-<br><br>
+<br>
 
 
 # Reference
