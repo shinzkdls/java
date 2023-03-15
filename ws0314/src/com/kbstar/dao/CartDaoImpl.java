@@ -22,7 +22,7 @@ public class CartDaoImpl implements DAO<String, String, Cart> {
 			e.printStackTrace();
 			return;
 		}
-		System.out.println("Driver Loading 성공.");
+		// System.out.println("Driver Loading 성공.");
 	}
 
 	@Override
@@ -116,8 +116,25 @@ public class CartDaoImpl implements DAO<String, String, Cart> {
 
 	@Override
 	public List<Cart> search(String K) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Cart> list = new ArrayList<Cart>();
+		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(Sql.myCartSelectAllSql)) {
+			pstmt.setString(1, K);
+			try (ResultSet rset = pstmt.executeQuery();) {
+				while (rset.next()) {
+					String id = rset.getString("id");
+					String user_id = rset.getString("user_id");
+					String item_id = rset.getString("item_id");
+					int cnt = rset.getInt("cnt");
+					Date regdate = rset.getDate("regdate");
+					list.add(new Cart(id, user_id, item_id, cnt, regdate));
+				}
+			} catch (Exception e) {
+				throw e;
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return list;
 	}
 
 }

@@ -22,7 +22,7 @@ public class ItemDaoImpl implements DAO<String, String, Item> {
 			e.printStackTrace();
 			return;
 		}
-		System.out.println("Driver Loading 성공.");
+		// System.out.println("Driver Loading 성공.");
 	}
 
 	@Override
